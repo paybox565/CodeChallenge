@@ -1,0 +1,15 @@
+<div class="users-list" *ngIf="usersList">
+  <ul>
+    <li *ngFor="let item of usersList">
+      <div class="avatar">
+        <img [src]="item.avatar" alt=""/>
+      </div>
+      <a routerLink="/user/{{item.id}}">{{item.first_name}} {{item.last_name}}</a>
+    </li>
+  </ul>
+  <!--<ngb-pagination
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [collectionSize]="items.length"></ngb-pagination>-->
+</div>
+
