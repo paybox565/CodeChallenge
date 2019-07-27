@@ -1,0 +1,7 @@
+<div *ngIf="user">
+  <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}}</h2>
+  <div class="image">
+    <img [src]="user.avatar" alt="">
+  </div>
+  <button (click)="goBack()">Вернуться к списку</button>
+</div>
