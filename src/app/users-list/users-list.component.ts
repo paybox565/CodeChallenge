@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {UsersServiceService} from "../users-service.service";
-import {User, UserData} from "../user";
+import {User, UserData, UsersData} from "../user";
 import {Observable} from "rxjs";
 
 @Component({
@@ -12,8 +12,9 @@ import {Observable} from "rxjs";
 export class UsersListComponent implements OnInit {
 
   usersList: User[];
-  usersData: UserData;
+  usersData: UsersData;
   currentPage: number = 1;
+  loading: boolean = true;
 
   constructor(private users: UsersServiceService) { }
 
@@ -27,6 +28,7 @@ export class UsersListComponent implements OnInit {
             data => {
               this.usersData = data;
               this.usersList = this.usersData.data;
+              this.loading = false;
             },
             err => console.error('Caught ' + err));
   }

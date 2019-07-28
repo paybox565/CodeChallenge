@@ -1,6 +1,7 @@
-<div class="users-list" *ngIf="usersList">
-  <ul>
-    <li *ngFor="let item of usersList | paginate: {
+<div>
+  <div class="users-list" *ngIf="!loading">
+    <div class="item" routerLink="/user/{{item.id}}"
+         *ngFor="let item of usersList | paginate: {
       itemsPerPage: usersData.per_page,
       currentPage: usersData.page,
       totalItems: usersData.total
@@ -8,11 +9,17 @@
       <div class="avatar">
         <img [src]="item.avatar" alt=""/>
       </div>
-      <a routerLink="/user/{{item.id}}">{{item.first_name}} {{item.last_name}}</a>
-    </li>
-  </ul>
-  <div class="text-right">
-    <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+      <div class="title">
+        <span>{{item.first_name}} {{item.last_name}}</span>
+      </div>
+    </div>
+    <div class="pagination__wrap">
+      <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+    </div>
+  </div>
+  <div *ngIf="loading" class="loading">
+    Loading ...
   </div>
 </div>
+
 

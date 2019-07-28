@@ -6,10 +6,14 @@ export class User {
     avatar: string;
 }
 
-export class UserData {
+export class UsersData {
   data: User[];
   page: number;
   per_page: number;
   total: number;
   total_pages: number;
+}
+
+export class UserData {
+  data: User;
 }

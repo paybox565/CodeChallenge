@@ -1,7 +1,14 @@
-<div *ngIf="user">
-  <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}}</h2>
-  <div class="image">
-    <img [src]="user.avatar" alt="">
+<div>
+  <button type="button" class="button goback" (click)="goBack()">Back to list</button>
+  <div *ngIf="user" class="user-data__wrap">
+    <div class="user-image">
+      <img [src]="user.avatar" alt="">
+    </div>
+    <div class="user-data">
+      <h2>{{user.first_name | uppercase}} {{user.last_name | uppercase}}</h2>
+      <div class="email">
+        <a href="mailto:{{user.email}}">{{user.email}}</a>
+      </div>
+    </div>
   </div>
-  <button (click)="goBack()">Вернуться к списку</button>
 </div>
