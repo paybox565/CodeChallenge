@@ -4,5 +4,12 @@ export class User {
     first_name: string;
     last_name: string;
     avatar: string;
-    data: any;
+}
+
+export class UserData {
+  data: User[];
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
 }

@@ -1,15 +1,18 @@
 <div class="users-list" *ngIf="usersList">
   <ul>
-    <li *ngFor="let item of usersList">
+    <li *ngFor="let item of usersList | paginate: {
+      itemsPerPage: usersData.per_page,
+      currentPage: usersData.page,
+      totalItems: usersData.total
+      }">
       <div class="avatar">
         <img [src]="item.avatar" alt=""/>
       </div>
       <a routerLink="/user/{{item.id}}">{{item.first_name}} {{item.last_name}}</a>
     </li>
   </ul>
-  <!--<ngb-pagination
-          [(page)]="page"
-          [pageSize]="pageSize"
-          [collectionSize]="items.length"></ngb-pagination>-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+  </div>
 </div>
 
