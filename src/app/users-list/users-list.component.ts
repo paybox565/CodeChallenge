@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import {UsersServiceService} from "../users-service.service";
-import {User} from "../user";
+import {User, UserData} from "../user";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-users-list',
@@ -11,18 +12,28 @@ import {User} from "../user";
 export class UsersListComponent implements OnInit {
 
   usersList: User[];
+  usersData: UserData;
+  currentPage: number = 1;
 
   constructor(private users: UsersServiceService) { }
 
   ngOnInit() {
-    this.getUserList();
+    this.getUsersList(this.currentPage);
   }
 
-  getUserList():void {
-    this.users.getMyUsers(1)
+  getUsersList(page):void {
+    this.users.getMyUsers(page)
         .subscribe(
-            users => this.usersList = users.data,
+            data => {
+              this.usersData = data;
+              this.usersList = this.usersData.data;
+            },
             err => console.error('Caught ' + err));
+  }
+
+  changePage(event): void {
+    this.currentPage = event;
+    this.getUsersList(this.currentPage);
   }
 
 }
