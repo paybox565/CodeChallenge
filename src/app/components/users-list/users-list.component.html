@@ -2,10 +2,10 @@
   <div class="users-list" *ngIf="!loading">
     <div class="item" routerLink="/user/{{item.id}}"
          *ngFor="let item of usersList | paginate: {
-      itemsPerPage: usersData.per_page,
-      currentPage: usersData.page,
-      totalItems: usersData.total
-      }">
+            itemsPerPage: usersData.per_page,
+            currentPage: usersData.page,
+            totalItems: usersData.total
+          }">
       <div class="avatar">
         <img [src]="item.avatar" alt=""/>
       </div>
