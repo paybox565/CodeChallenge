@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {UsersServiceService} from "../users-service.service";
-import {User, UserData, UsersData} from "../user";
+import {UsersServiceService} from "../../services/users-service.service";
+import {User, UserData, UsersData} from "../../shared/user";
 import {Observable} from "rxjs";
 
 @Component({
@@ -22,7 +22,7 @@ export class UsersListComponent implements OnInit {
     this.getUsersList(this.currentPage);
   }
 
-  getUsersList(page):void {
+  getUsersList(page:number):void {
     this.users.getMyUsers(page)
         .subscribe(
             data => {
